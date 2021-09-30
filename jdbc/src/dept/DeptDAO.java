@@ -101,7 +101,11 @@ public class DeptDAO {
    }
 
 	//새로운 부서 입력
-	
+	public int insert() {
+		int result = 0;
+		
+		return result;
+	}
 	
 	
 }
