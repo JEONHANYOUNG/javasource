@@ -100,11 +100,36 @@ public class DeptDAO {
 	 return dto;
    }
 
-	//새로운 부서 입력
-	public int insert() {
-		int result = 0;
+	//새로운 부서 입력 insert into dept_temp(deptno,dname,loc) values(?,?,?);
+	public boolean insert(DeptDTO dto) {
+		boolean flag=false;
 		
-		return result;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			con = getConnection();
+			String sql = "insert into dept_temp(deptno,dname,loc) values(?,?,?)";
+		    pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, dto.getDeptNo());
+			pstmt.setString(2,	dto.getDname());
+			pstmt.setString(3,	dto.getLoc());
+			int result = pstmt.executeUpdate();
+			if (result>0) {
+				flag=true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		return flag;
 	}
 	
 	
