@@ -114,6 +114,7 @@ public class DeptDAO {
 			pstmt.setInt(1, dto.getDeptNo());
 			pstmt.setString(2,	dto.getDname());
 			pstmt.setString(3,	dto.getLoc());
+			System.out.println("¸ÁÇÔ");
 			int result = pstmt.executeUpdate();
 			if (result>0) {
 				flag=true;
