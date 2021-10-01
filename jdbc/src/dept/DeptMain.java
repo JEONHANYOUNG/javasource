@@ -28,7 +28,7 @@ public class DeptMain {
 			System.out.println("부서번호\t부서명\t지역");
 			for(DeptDTO dto : list) {
 				
-				System.out.print(dto.getDeptNo()+"\t");
+			System.out.print(dto.getDeptNo()+"\t");
 			System.out.println(dto.getDname()+"\t");
 			System.out.println(dto.getLoc()+"\t");
 		}
