@@ -160,8 +160,7 @@ public class DeptDAO {
 			}
 		}
 		return flag;
-	} 
-	
+	} 	
 	
 	//delete from dept_temp where deptno=?
 	//delete()
