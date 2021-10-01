@@ -155,8 +155,8 @@ public class DeptDAO {
 			try {
 				pstmt.close();
 				con.close();
-			} catch (Exception e2) {
-			 e2.printStackTrace();
+			} catch (Exception e3) {
+			 e3.printStackTrace();
 			}
 		}
 		return flag;
