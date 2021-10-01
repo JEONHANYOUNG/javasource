@@ -132,5 +132,34 @@ public class DeptDAO {
 		return flag;
 	}
 	
+	// 부서명 변경 : update dept_temp set dname=? where deptno=?
+	public boolean update(String dname, int deptNo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		boolean flag = false;
+		
+		try {
+			String sql = "update dept_temp set dname=? where deptno=?";
+			con=getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, dname);
+			pstmt.setInt(2, deptNo);
+			
+			int result = pstmt.executeUpdate();
+			if (result>0) {
+				flag = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				con.close();
+			} catch (Exception e2) {
+			 e2.printStackTrace();
+			}
+		}
+		return flag;
+	} 
 	
 }
