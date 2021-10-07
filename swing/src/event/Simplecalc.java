@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -71,15 +72,28 @@ public class Simplecalc extends JFrame implements ActionListener {
 		if(cmd.equals("확인")) {
 			// 확인 버튼 클릭
 			// num1,num2에 들어있는 값 가져오기
-			int op1 = Integer.parseInt(num1.getText()); // "5" + "7" => "57"
-			int op2 = Integer.parseInt(num2.getText()); // "5" + "7" => "57"
 			
-			// 가져온 숫자에 덧셈
-			int total = op1 + op2;
+			try {
+				// Integar.parseInt("") => NumberFormatException
+				int op1 = Integer.parseInt(num1.getText()); // "5" + "7" => "57"
+				int op2 = Integer.parseInt(num2.getText()); 
+				
+				// 가져온 숫자에 덧셈
+				int total = op1 + op2;
+				
+				// 결과를 result에 보여주기
+				//result.setText(total+"");
+				result.setText(String.valueOf(total));
+								
+			} catch (Exception e2) {
+				// 개발할때 예외 발생 단계를 출력
+				// e2.printStackTrace();
 			
-			// 결과를 result에 보여주기
-			//result.setText(total+"");
-			result.setText(String.valueOf(total));
+				// 사용자에게 메세지를 출력
+				JOptionPane.showMessageDialog(getParent(), "입력값을 확인해 주세요");		
+			
+			}
+			
 			
 		} else {
 			// 취소 버튼 클릭
